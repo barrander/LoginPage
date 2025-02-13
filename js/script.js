@@ -16,25 +16,19 @@ togglePassword.addEventListener("click", () => {
 
 // 2) EXIBIR MENSANGEM DE BEM-VINDO AO CLICAR NO BOTÃO DE LOGIN
 
-document.addEventListener("DOMContentLoaded", () => {
-    const loginForm = document.getElementById("login-form");
-    const loginBtn = document.getElementById("loginBtn");
-    const usernameInput = document.getElementById("username");
-    const loginWrapper = document.querySelector(".wrapper");
-    const message = document.getElementById("welcomeMessage");
+const loginBtn = document.getElementById("loginBtn");
+const usernameInput = document.getElementById("username");
+const loginContainer = document.querySelector(".login-container");
+const welcomeMessage = document.getElementById("welcomeMessage");
 
-    loginForm.addEventListener("submit", (event) => {
-        event.preventDefault(); // PARA PREVENIR O RECARREGAMENTO DA PÁGINA
+loginBtn.addEventListener("click", () => {
+    const username = usernameInput.value.trim();
 
-        const username = usernameInput.value.trim();
-
-        if (username !== "") {
-            message.innerHTML = `<h2>Olá, ${username}!</h2>`;
-            message.style.display = "flex"; // EXIBE MENSAGEM DE SAUDAÇÃO
-            loginWrapper.style.display = "none"; // OCULTA O FORM
-        } else {
-            alert("Por favor, insira o seu usuário!");
-        }
-    });
-
+    if (username !== "") {
+        welcomeMessage.innerHTML = `<h2>Olá, ${username}!</h2>`;
+        loginContainer.style.display = "none"; // PARA OCULTAR O FORM
+        welcomeMessage.style.display = "block"; // PARA EXIBIR MENSAGEM DE OLÁ
+    } else {
+        alert("Por favor, informe o seu usuário!");
+    }
 });
